@@ -1,4 +1,4 @@
-var words =["table" , "head" , "basketball"];
+var words =["table" , "head" , "basketball" , "row"];
 var w= Math.floor(Math.random()*words.length);
 console.log(w); 
 var click = 0 ;
