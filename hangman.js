@@ -1,39 +1,44 @@
 // לתקן את מילה עם שתי אותיות זהות, שירשום את שתיהן. שהמחשב ידע שהמשחק נגמר או כשהשחקן גילה את כל המילה או כאשר האיש נתלה. לעצב את האתר.
 var game_over = false ;
-var words =["table" , "head" , "basketball" , "row"];
-var w= Math.floor(Math.random()*words.length);
-console.log(w); 
-var click = 0 ;
-var c = document.getElementById("myCanvas"); //מתקן תלייה
-var ctx = c.getContext("2d");
-ctx.moveTo(100,500);
-ctx.lineTo(450,500);
-ctx.stroke();
-var c = document.getElementById("myCanvas"); 
-var ctx = c.getContext("2d");
-ctx.moveTo(430,500);
-ctx.lineTo(430,10);
-ctx.stroke();
-var c = document.getElementById("myCanvas"); 
-var ctx = c.getContext("2d");
-ctx.moveTo(430,10);
-ctx.lineTo(70,10);
-ctx.stroke();
+var click;
+var word;
+restart();
+function restart() {   
+    var words =["table" , "head" , "basketball" , "row"];
+    var w= Math.floor(Math.random()*words.length);
+    console.log(w); 
+    click = 0 ;
+    var c = document.getElementById("myCanvas"); //מתקן תלייה
+    var ctx = c.getContext("2d");
+    ctx.moveTo(100,500);
+    ctx.lineTo(450,500);
+    ctx.stroke();
+    var c = document.getElementById("myCanvas"); 
+    var ctx = c.getContext("2d");
+    ctx.moveTo(430,500);
+    ctx.lineTo(430,10);
+    ctx.stroke();
+    var c = document.getElementById("myCanvas"); 
+    var ctx = c.getContext("2d");
+    ctx.moveTo(430,10);
+    ctx.lineTo(70,10);
+    ctx.stroke();
 
-var c = document.getElementById("myCanvas"); 
-var ctx = c.getContext("2d");
-ctx.moveTo(150,10);
-ctx.lineTo(150,50);
-ctx.stroke();
+    var c = document.getElementById("myCanvas"); 
+    var ctx = c.getContext("2d");
+    ctx.moveTo(150,10);
+    ctx.lineTo(150,50);
+    ctx.stroke();
 
-var display_field = document.getElementById('display');
-var word = words[w] ;
-//word = "lilili" ;
-display_field.innerHTML = " _".repeat(word.length) ;
-
+    var display_field = document.getElementById('display');
+    word = words[w] ;
+    //word = "lilili" ;
+    display_field.innerHTML = " _".repeat(word.length) ;
+}
 
 
 function check() {
+    var display_field = document.getElementById('display');
     var input_field = document.getElementById('a');
     var a = input_field.value ;
     //console.log(a);
@@ -109,9 +114,8 @@ function draw() {
         ctx.stroke();         
     }
 game_over = true ;
-}
-        
- // קוד שהמחשב חושב על מילה לכתוב input 1 והמחשב בודק אם יש את האות במילה    
-        
+}    
+  
+  // לאפס ציור כשלוחצים על ריסטרט. לזהות כשהמשחק נגמר בשתי האפשרויות ולתת לו התראה. להציג את האותיות שכבר נכתבו ולאפ גם זאת בלחיצת ריסטרט. להוסיף צבעים ולסדר בצורה יפה.
 
 
