@@ -1,3 +1,5 @@
+// לתקן את מילה עם שתי אותיות זהות, שירשום את שתיהן. שהמחשב ידע שהמשחק נגמר או כשהשחקן גילה את כל המילה או כאשר האיש נתלה. לעצב את האתר.
+var game_over = false ;
 var words =["table" , "head" , "basketball" , "row"];
 var w= Math.floor(Math.random()*words.length);
 console.log(w); 
@@ -26,6 +28,7 @@ ctx.stroke();
 
 var display_field = document.getElementById('display');
 var word = words[w] ;
+//word = "lilili" ;
 display_field.innerHTML = " _".repeat(word.length) ;
 
 
@@ -33,23 +36,31 @@ display_field.innerHTML = " _".repeat(word.length) ;
 function check() {
     var input_field = document.getElementById('a');
     var a = input_field.value ;
-    console.log(a);
+    //console.log(a);
     var n = word.indexOf(a) ;
-    console.log(n);
+    //console.log(n);
     if (n === -1){
         draw();
     }
     else {
-        var y=2*n+1 ;
-        var str = display_field.innerHTML;
-        display_field.innerHTML = str.substr(0,y) + a + str.substr(y+1);
+        for (; n !== -1; ){
+            var y=2*n+1 ;
+            var str = display_field.innerHTML;
+            console.log(n);
+            console.log(y);
+            display_field.innerHTML = str.substr(0,y) + a + str.substr(y+1);
+            n = word.indexOf(a, n+1);   
+        }
+        //display_field.innerHTML = str.replace(/_/g, a);
+        game_over = true ; 
+       // console.log("d");         
     }
 }
 
 
 function draw() {
   click++ ;
-  console.log(click) ;
+  //console.log(click) ;
     if (click === 1) {
         var elem = document.getElementById('myCanvas'); //ראש
         var ctx = elem.getContext('2d');
@@ -97,6 +108,7 @@ function draw() {
         ctx.lineTo(220,420);
         ctx.stroke();         
     }
+game_over = true ;
 }
         
  // קוד שהמחשב חושב על מילה לכתוב input 1 והמחשב בודק אם יש את האות במילה    
