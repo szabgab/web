@@ -61,8 +61,11 @@ function check() {
             display_field.innerHTML = str.substr(0,y) + a + str.substr(y+1);
             n = word.indexOf(a, n+1);   
         }    
-      //display_field.innerHTML = str.replace(/_/g, a);
-       // console.log("d");         
+        var str = display_field.innerHTML;
+        var d = str.indexOf ("_") ;
+        if (d === -1){
+            window.alert ('You win, if you would like to play again press "restart"');
+        }
     }
 }
 
@@ -115,15 +118,10 @@ function draw() {
         ctx.moveTo(150,290);
         ctx.lineTo(220,420);
         ctx.stroke();         
-        if ( game_over = true){
-            window.alert ('the game is over, if you would like to play again press "restart"');
-        }   
+         window.alert ('You lost but if you would like to play again press "restart"');
     }
 }    
-  
 
-//לאפס ציור כשלוחצים על ריסטרט
-// לזהות שהמשחק נגמר כאשר מגלים את כל המילה ולתת התראה
 // להוסיף צבעים ולסדר יפה
 
   
