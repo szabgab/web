@@ -1,31 +1,32 @@
-// לתקן את מילה עם שתי אותיות זהות, שירשום את שתיהן. שהמחשב ידע שהמשחק נגמר או כשהשחקן גילה את כל המילה או כאשר האיש נתלה. לעצב את האתר.
 var game_over = false ;
 var click;
 var word;
+var storage_field= document.getElementById('storage') ;
+storage_field.innerHTML = "" ;
 restart();
-function restart() {   
+
+function restart() { 
+    document.getElementById('storage').innerHTML = " " ;  
     var words =["table" , "head" , "basketball" , "row"];
     var w= Math.floor(Math.random()*words.length);
     console.log(w); 
     click = 0 ;
     var c = document.getElementById("myCanvas"); //מתקן תלייה
     var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.beginPath();
     ctx.moveTo(100,500);
     ctx.lineTo(450,500);
     ctx.stroke();
-    var c = document.getElementById("myCanvas"); 
-    var ctx = c.getContext("2d");
+
     ctx.moveTo(430,500);
     ctx.lineTo(430,10);
     ctx.stroke();
-    var c = document.getElementById("myCanvas"); 
-    var ctx = c.getContext("2d");
+
     ctx.moveTo(430,10);
     ctx.lineTo(70,10);
     ctx.stroke();
 
-    var c = document.getElementById("myCanvas"); 
-    var ctx = c.getContext("2d");
     ctx.moveTo(150,10);
     ctx.lineTo(150,50);
     ctx.stroke();
@@ -46,6 +47,10 @@ function check() {
     //console.log(n);
     if (n === -1){
         draw();
+        var storage_field = document.getElementById('storage');
+        storage_field.innerHTML += " " + a ;
+       // var storage_field = document.getElementById('a');
+        // storage_field.innerHTML = 'a';
     }
     else {
         for (; n !== -1; ){
@@ -55,13 +60,11 @@ function check() {
             console.log(y);
             display_field.innerHTML = str.substr(0,y) + a + str.substr(y+1);
             n = word.indexOf(a, n+1);   
-        }
-        //display_field.innerHTML = str.replace(/_/g, a);
-        game_over = true ; 
+        }    
+      //display_field.innerHTML = str.replace(/_/g, a);
        // console.log("d");         
     }
 }
-
 
 function draw() {
   click++ ;
@@ -112,10 +115,22 @@ function draw() {
         ctx.moveTo(150,290);
         ctx.lineTo(220,420);
         ctx.stroke();         
+        if ( game_over = true){
+            window.alert ('the game is over, if you would like to play again press "restart"');
+        }   
     }
-game_over = true ;
 }    
   
-  // לאפס ציור כשלוחצים על ריסטרט. לזהות כשהמשחק נגמר בשתי האפשרויות ולתת לו התראה. להציג את האותיות שכבר נכתבו ולאפ גם זאת בלחיצת ריסטרט. להוסיף צבעים ולסדר בצורה יפה.
 
+//לאפס ציור כשלוחצים על ריסטרט
+// לזהות שהמשחק נגמר כאשר מגלים את כל המילה ולתת התראה
+// להוסיף צבעים ולסדר יפה
 
+  
+  
+  
+  
+  
+  
+  
+  
